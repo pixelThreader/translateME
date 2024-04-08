@@ -16,7 +16,7 @@
   "routes": [
     {
       "src": "/(.*)",
-      "dest": "templates/index.html",
+      "dest": "Translator/wsgi.py",
       "continue": true
     }
   ]
