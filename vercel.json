@@ -2,8 +2,8 @@
   "version": 2,
   "builds": [
     {
-      "src": "Translator",
-      "use": ".vercel/build/translator",
+      "src": "Translator/wsgi.py",
+      "use": "@vercel/python",
       "config": {
         "buildCommand": "django-admin build -c production",
         "runtime": "python:3.9",
