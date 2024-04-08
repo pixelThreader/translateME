@@ -1,16 +1,23 @@
 {
   "version": 2,
   "builds": [
-    { "src": "Translator/wsgi.py", "use": "@vercel/python" }
+    {
+      "src": "Translator",
+      "use": ".vercel/build/translator",
+      "config": {
+        "buildCommand": "django-admin build -c production",
+        "runtime": "python:3.9",
+        "environment": {
+          "DJANGO_SETTINGS_MODULE": "translator.settings.production"
+        }
+      }
+    }
   ],
   "routes": [
-    { "src": "/static/(.*)", "dest": "static/$1" },
-    { "src": "/(.*)", "dest": "Translator/wsgi.py" }
-  ],
-  "rewrites": [
-    { "source": "/favicon.ico", "destination": "/static/favicon.ico" }
-  ],
-  "env": {
-    "DJANGO_SETTINGS_MODULE": "Translator.settings"
-  }
+    {
+      "src": "/(.*)",
+      "dest": "templates/index.html",
+      "continue": true
+    }
+  ]
 }
