@@ -1,15 +1,12 @@
 {
   "version": 2,
   "builds": [
-    { "src": "manage.py", "use": "@vercel/python" }
+    { "src": "Translator/wsgi.py", "use": "@vercel/python" }
   ],
   "routes": [
-    { "src": "/static/(.*)", "dest": "static/$1" },
-    { "src": "/media/(.*)", "dest": "media/$1" },
-    { "handle": "filesystem" },
     {
       "src": "/(.*)",
-      "dest": "/manage.py"
+      "dest": "Translator/wsgi.py"
     }
   ],
   "env": {
