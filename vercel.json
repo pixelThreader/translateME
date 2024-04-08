@@ -4,10 +4,9 @@
     { "src": "Translator/wsgi.py", "use": "@vercel/python" }
   ],
   "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "templates/index.html"
-    }
+    { "src": "/static/(.*)", "dest": "static/$1" },
+    { "src": "/wsgi.py", "dest": "Translator/wsgi.py" },
+    { "handle": "filesystem" }
   ],
   "env": {
     "DJANGO_SETTINGS_MODULE": "Translator.settings"
