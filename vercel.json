@@ -1,9 +1,18 @@
 {
-    "version": 2,
-    "routes":[
-        {
-            "src":"/(.*)",
-            "dest":"Translator/wsgi.py"
-        }
-    ]
+  "version": 2,
+  "builds": [
+    { "src": "manage.py", "use": "@vercel/python" }
+  ],
+  "routes": [
+    { "src": "/static/(.*)", "dest": "static/$1" },
+    { "src": "/media/(.*)", "dest": "media/$1" },
+    { "handle": "filesystem" },
+    {
+      "src": "/(.*)",
+      "dest": "/manage.py"
+    }
+  ],
+  "env": {
+    "DJANGO_SETTINGS_MODULE": "Translator.settings"
+  }
 }
