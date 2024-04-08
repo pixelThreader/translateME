@@ -5,15 +5,12 @@
   ],
   "routes": [
     { "src": "/static/(.*)", "dest": "static/$1" },
-    { "src": "/wsgi.py", "dest": "Translator/wsgi.py" },
-    { "handle": "filesystem" }
+    { "src": "/(.*)", "dest": "Translator/wsgi.py" }
+  ],
+  "rewrites": [
+    { "source": "/favicon.ico", "destination": "/static/favicon.ico" }
   ],
   "env": {
     "DJANGO_SETTINGS_MODULE": "Translator.settings"
-  },
-  "functions": {
-    "api": {
-      "runtime": "python3.9"
-    }
   }
 }
