@@ -14,5 +14,10 @@
   ],
   "env": {
     "DJANGO_SETTINGS_MODULE": "Translator.settings"
+  },
+  "functions": {
+    "api": {
+      "runtime": "python3.9"
+    }
   }
 }
