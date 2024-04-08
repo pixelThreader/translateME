@@ -1,23 +1,13 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "Translator/wsgi.py",
-      "use": "@vercel/python",
-      "config": {
-        "buildCommand": "django-admin build -c production",
-        "runtime": "python:3.9",
-        "environment": {
-          "DJANGO_SETTINGS_MODULE": "translator.settings.production"
+    "builds":[{
+        "src":"Translator/wsgi.py",
+        "use":"@vercel/python",
+        "config":{"maxLambdaSize":"15mb","runtime":"python3.11"}
+    }],
+    "routes":[
+        {
+            "src":"/(.*)",
+            "dest":"Translator/wsgi.py"
         }
-      }
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "Translator/wsgi.py",
-      "continue": true
-    }
-  ]
+    ]
 }
